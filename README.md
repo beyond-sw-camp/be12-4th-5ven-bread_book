@@ -91,9 +91,9 @@
 ---
 
 ## 🌐 시스템 아키텍처
-
+&nbsp;
 - [시스템 아키텍처](https://github.com/beyond-sw-camp/be12-4th-5ven-bread_book/wiki/%EC%8B%9C%EC%8A%A4%ED%85%9C-%EC%95%84%ED%82%A4%ED%85%8D%EC%B2%98)
-
+&nbsp;
 ---
 
 ## 📚 다른 시나리오와의 비교
@@ -134,22 +134,5 @@
 ---
 
 ## 💻 CI/CD 테스트 및 결과
-
-
-<details>
-   <summary> 젠킨스 파이프라인 </summary>
-
-
-</details>
-&nbsp; 
-<details>
-   <summary> K8S Blue/Green 배포 </summary>
-
-
-</details>
-&nbsp; 
-<details>
-   <summary> 디스코드 알림 </summary>
-
-
-</details>
+&nbsp;
+- [CI/CD 테스트 및 결과](https://github.com/beyond-sw-camp/be12-4th-5ven-bread_book/wiki/%F0%9F%92%BB-CI-CD-%ED%85%8C%EC%8A%A4%ED%8A%B8-%EB%B0%8F-%EA%B2%B0%EA%B3%BC)
