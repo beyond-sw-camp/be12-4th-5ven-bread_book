@@ -38,6 +38,16 @@
 ![Docker](https://img.shields.io/badge/docker-%232496ED.svg?style=for-the-badge&logo=docker&logoColor=white)
 ![Jenkins](https://img.shields.io/badge/jenkins-%23D24939.svg?style=for-the-badge&logo=jenkins&logoColor=white)
 
+### 목차
+- [프로젝트 배경](#-프로젝트-배경)
+- [jenkins 선택 이유](#-젠킨스-선택-이유)
+- [블루/그린 선택 이유](#블루/그린-배포-전략이-중고거래-플랫폼에-적합한-이유)
+- [시스템 아키텍처](#-시스템-아키텍처)
+- [다른 시나리오와 비교](#-다른-시나리오와의-비교)
+- [배포 흐름](#-배포-흐름)
+- [CI/CD 테스트 및 결과](#-CI/CD-테스트-및-결과)
+<br><br>
+---
 
 ## 🌳 프로젝트 배경
 
