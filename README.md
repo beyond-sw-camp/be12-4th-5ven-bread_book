@@ -53,7 +53,7 @@
 |       | 빌드      | 배포              |
 |-------|---------|-----------------|
 | 자동화도구 | Jenkins | Jenkins         |
-| 사용 기술 | Docker  | - K8S Blue/Green |
+| 사용 기술 | Docker  | K8S Blue/Green |
 
 ### ⚙ Kafka 시스템
 |       |서버준비단계| 빌드     | 배포 |
