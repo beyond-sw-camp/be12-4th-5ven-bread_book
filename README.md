@@ -1,3 +1,44 @@
+# 중고서적 거래 플랫폼 책빵 📖🍞 !
+<p align="middle" style="margin: 0; padding: 0;">
+  <img width="200px" src="https://github.com/user-attachments/assets/59f2249b-790f-416c-a965-42a51ac5e06e">
+</p>
+
+<p align="middle">
+[플레이 데이터] 한화시스템 BEYOND SW캠프
+<br>🥪팀 5VEN
+</p>
+
+## 😃 팀원 소개
+
+<figure>
+    <table>
+      <tr>
+        <td align="center"><img src="https://github.com/user-attachments/assets/161f9f29-3a5e-415c-96ac-3dfe206d2c81" width="180px"/></td>
+        <td align="center"><img src="https://github.com/user-attachments/assets/aefd8909-7201-4162-be56-b4815512d4c4" width="180px"/></td>
+        <td align="center"><img src="https://github.com/user-attachments/assets/f73098ea-a9ee-4915-b38a-a6c05f6e4c6a" width="180px"/></td>
+	<td align="center"><img src="https://github.com/user-attachments/assets/854f6d73-5aac-4c17-add8-5c5ebc768f7b" width="180px"/></td>
+        <td align="center"><img src="https://github.com/user-attachments/assets/06e97207-fffe-459c-934e-a2ef79ef4f22" width="180px"/></td>
+      </tr>
+      <tr>
+        <td align="center">팀장: <a href="https://github.com/daydeiday">곽효림</a></td>
+        <td align="center">팀원: <a href="https://github.com/wkdlrn">김재구</a></td>
+        <td align="center">팀원: <a href="https://github.com/ChangeunLim" >임찬근</a></td>
+        <td align="center"><strong>팀장</strong>: <a href="https://github.com/InukChoi">최인욱</a></td>
+	<td align="center">팀원: <a href="https://github.com/choi-won-ik" >최원익</a></td>
+      </tr>
+    </table>
+</figure>
+
+
+
+&nbsp; 
+
+## 🔧 기술 스택
+![Kubernetes](https://img.shields.io/badge/k8s-%23326ce5.svg?style=for-the-badge&logo=kubernetes&logoColor=white)
+![Docker](https://img.shields.io/badge/docker-%232496ED.svg?style=for-the-badge&logo=docker&logoColor=white)
+![Jenkins](https://img.shields.io/badge/jenkins-%23D24939.svg?style=for-the-badge&logo=jenkins&logoColor=white)
+
+
 ## 🌳 프로젝트 배경
 
 우리 프로젝트는 **중고거래 플랫폼**으로서 사용자 피드백에 빠르게 대응하고, 새로운 기능을 신속하고 안정적으로 배포하는 것이 중요합니다. 특은 1:1 거래가 주요 비즈니스 모델이므로, 사용자 경험에 직접적인 영향을 주는 기능들을 **최대한 빠르고 오류 없이 배포하는 것이 필수적**입니다. 이러한 요구사항을 충족하기 위해 **젠킨스(Jenkins)** 를 CI/CD 도구로 선택했습니다.
@@ -19,7 +60,7 @@
 |-------|---|-|----|
 | 자동화도구 | Ansible   | 아파치 제공     | Ansible |
 
-### ✅젠킨스 선택 이유
+### ⚙ 젠킨스 선택 이유
 | 구분 | 내용 |
 |------|------|
 | **브랜치 전략 지원** | Git Flow, GitHub Flow 등 다양한 브랜치 전략을 쉽게 구성하여 기능 단위 배포와 핫픽스 대응이 가능 |
@@ -28,7 +69,7 @@
 | **오픈소스 기반 유연성** | 오픈소스 기반으로 커뮤니티, 문서가 풍부해 빠른 적응 및 운영 중 이슈 신속 해결 가능 |
 
 
-### ✅ 블루-그린 배포 전략이 중고거래 플랫폼에 적합한 이유
+### 🟦🟩 블루-그린 배포 전략이 중고거래 플랫폼에 적합한 이유
 
 | 구분 | 설명 |
 |------|------|
@@ -36,6 +77,12 @@
 | **명확한 배포 시점과 빠른 롤백** | 트래픽 전환이 즉각적이며, 긴급 이슈 발생 시 원클릭 롤백 가능. 롤링·카나리 배포보다 빠름 |
 | **사용자 경험 일관성 보장** | 모든 사용자에게 동일한 버전을 동시에 제공해 혼란 방지 및 품질 유지 |
 | **젠킨스와의 높은 통합성** | 젠킨스 플러그인 및 파이프라인을 통해 블루-그린 배포 자동화, 모니터링, 롤백까지 완전 자동화 가능 |
+
+---
+
+## 🌐 시스템 아키텍처
+
+
 ---
 
 ## 📚 다른 시나리오와의 비교
@@ -53,7 +100,7 @@
 
 ---
 
-## ✅ 배포 흐름
+## 🌀 배포 흐름
 
 1. **Ansible 연동을 통한 서버 관리 및 배포 자동화**
     - Ansible을 통해 서버 설정 관리, 배포 자동화 스크립트 실행을 간소화하여 관리 효율성을 높입니다.
@@ -74,3 +121,24 @@
 
 
 ---
+
+## 🌀 CI/CD 테스트 및 결과
+
+
+<details>
+   <summary> 젠킨스 파이프라인 </summary>
+
+
+</details>
+&nbsp; 
+<details>
+   <summary> K8S Blue/Green 배포 </summary>
+
+
+</details>
+&nbsp; 
+<details>
+   <summary> 디스코드 알림 </summary>
+
+
+</details>
