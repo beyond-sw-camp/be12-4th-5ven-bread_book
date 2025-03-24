@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: breadbook
+  name: frontend-deployment-COLOR
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      type: frontend
+      deployment: front-COLOR
+  template:
+    metadata:
+      labels:
+        type: frontend
+        deployment: front-COLOR
+    spec:
+      containers:
+        - name: front
+          image: iuch/breadbook-front:LATEST
+          volumeMounts:
+            - name: image-upload
+              mountPath: /mnt
+          ports:
+            - containerPort: 80
+      volumes:
+        - name: image-upload
+          persistentVolumeClaim:
+            claimName: image-pvc
