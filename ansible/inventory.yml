@@ -1,15 +1,14 @@
 all:
   hosts:
-    192.0.5.222:
-    192.0.5.223:
-    192.0.5.224:
-  children:
     node1:
-      hosts:
-        192.0.5.222
+      ansible_host: 192.0.5.221
     node2:
-      hosts:
-        192.0.5.223
+      ansible_host: 192.0.5.223
     node3:
+      ansible_host: 192.0.5.224
+  children:
+    kafka_nodes:
       hosts:
-        192.0.5.224
+        node1:
+        node2:
+        node3:

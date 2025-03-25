@@ -46,6 +46,7 @@
     - name: rm meta.properties
       shell: |
         rm /usr/local/kafka/logs/kraft-log/meta.properties
+      ignore_errors: yes
 
     - name: Create Kafka loga directory
       file:
@@ -67,26 +68,26 @@
         regexp: '^node.id='
         line: 'node.id={{ groups["all"].index(inventory_hostname) + 1 }}'
       when: server_properties_status.stat.exists
-    
-    - name: Configure controller.quorum.voters
+
+    - name: Configure controller.quorum.voters dynamically
       lineinfile:
         path: /opt/kafka_2.13-{{ kafka_version }}/config/server.properties
         regexp: '^controller.quorum.voters='
-        line: 'controller.quorum.voters=1@192.0.5.222:9093,2@192.0.5.223:9093,3@192.0.5.224:9093'
+        line: 'controller.quorum.voters={{ groups["kafka_nodes"].index(inventory_hostname) + 1 }}@{{ hostvars[inventory_hostname].ansible_host }}:9093'
       when: server_properties_status.stat.exists
 
     - name: Configure listeners
       lineinfile:
         path: /opt/kafka_2.13-{{ kafka_version }}/config/server.properties
-        regexp: '^#listeners=PLAINTEXT://:9092'
-        line: 'listeners=PLAINTEXT://{{ inventory_hostname }}:9092,CONTROLLER://{{ inventory_hostname }}:9093'
+        regexp: '^listeners=.*'
+        line: 'listeners=PLAINTEXT://{{ ansible_host }}:9092,CONTROLLER://{{ ansible_host }}:9093'
       when: server_properties_status.stat.exists
 
     - name: Configure advertised.listeners
       lineinfile:
         path: /opt/kafka_2.13-{{ kafka_version }}/config/server.properties
-        regexp: '^advertised.listeners=PLAINTEXT://localhost:9092,CONTROLLER://localhost:9093'
-        line: 'advertised.listeners=PLAINTEXT://{{ inventory_hostname }}:9092'
+        regexp: '^advertised.listeners=.*'
+        line: 'advertised.listeners=PLAINTEXT://{{ ansible_host }}:9092'
       when: server_properties_status.stat.exists
 
     - name: Configure log.dirs
@@ -108,6 +109,20 @@
         path: /opt/kafka_2.13-{{ kafka_version }}/config/server.properties
         regexp: '^offsets.topic.replication.factor='
         line: 'offsets.topic.replication.factor=3'
+      when: server_properties_status.stat.exists
+
+    - name: Configure share.coordinator.state.topic.replication.factor
+      lineinfile:
+        path: /opt/kafka_2.13-{{ kafka_version }}/config/server.properties
+        regexp: '^share.coordinator.state.topic.replication.factor=1'
+        line: 'share.coordinator.state.topic.replication.factor=3'
+      when: server_properties_status.stat.exists
+
+    - name: Configure share.coordinator.state.topic.min.isr
+      lineinfile:
+        path: /opt/kafka_2.13-{{ kafka_version }}/config/server.properties
+        regexp: '^share.coordinator.state.topic.min.isr=1'
+        line: 'sshare.coordinator.state.topic.min.isr=3'
       when: server_properties_status.stat.exists
     
     - name: Configure transaction.state.log.replication.factor
@@ -143,9 +158,16 @@
         /opt/kafka_2.13-{{ kafka_version }}/bin/kafka-server-start.sh /opt/kafka_2.13-{{ kafka_version }}/config/server.properties &
       args:
         chdir: /opt/kafka_2.13-{{ kafka_version }}
-
-  handlers:
-    - name: restart kafka
+    
+    - name: Restart-stop Kafka
       shell: |
-        /opt/kafka_2.13-{{ kafka_version }}/bin/kafka-server-stop.sh /opt/kafka_2.13-{{ kafka_version }}/config/server.properties
-         /opt/kafka_2.13-{{ kafka_version }}/bin/kafka-server-start.sh /opt/kafka_2.13-{{ kafka_version }}/config/server.properties &
+        /opt/kafka_2.13-{{ kafka_version }}/bin/kafka-server-stop.sh
+        sleep 5
+      args:
+        chdir: /opt/kafka_2.13-{{ kafka_version }}
+
+    - name: ReStart Kafka
+      shell: |
+        /opt/kafka_2.13-{{ kafka_version }}/bin/kafka-server-start.sh /opt/kafka_2.13-{{ kafka_version }}/config/server.properties &
+      args:
+        chdir: /opt/kafka_2.13-{{ kafka_version }}
