@@ -1,0 +1,151 @@
+- name: Kafka Cluster Setup
+  hosts: all
+  become: true
+  vars:
+    kafka_version: "4.0.0"  # 사용할 Kafka 버전
+    kafka_download_url: "https://dlcdn.apache.org/kafka/{{ kafka_version }}/kafka_2.13-{{ kafka_version }}.tgz"  # Kafka 다운로드 URL
+
+  tasks:
+    - name: Install JDK and net-tools
+      apt:
+        name:
+          - openjdk-17-jdk
+          - net-tools
+        state: present
+        update_cache: yes
+
+    - name: Download Kafka
+      get_url:
+        url: "{{ kafka_download_url }}"
+        dest: /tmp/kafka.tgz
+        mode: '0644'
+      register: kafka_download
+
+    - name: Extract Kafka
+      unarchive:
+        src: /tmp/kafka.tgz
+        dest: /opt/
+        remote_src: yes
+        mode: '0755'
+        extra_opts: []  
+
+    - name: Fix Kafka directory permissions
+      file:
+        path: /opt/kafka_2.13-{{ kafka_version }}
+        state: directory
+        owner: root
+        group: root
+        mode: '0755'
+        recurse: yes
+
+    - name: Ensure Kafka config directory exists
+      stat:
+        path: /opt/kafka_2.13-{{ kafka_version }}/config
+      register: kafka_config_status
+
+    - name: rm meta.properties
+      shell: |
+        rm /usr/local/kafka/logs/kraft-log/meta.properties
+
+    - name: Create Kafka loga directory
+      file:
+        path: /usr/local/kafka/logs/kraft-log
+        state: directory
+        recurse: yes
+        owner: root
+        group: root
+        mode: '0755'
+
+    - name: Check if server.properties exists
+      stat:
+        path: /opt/kafka_2.13-{{ kafka_version }}/config/server.properties
+      register: server_properties_status
+
+    - name: Configure node.id
+      lineinfile:
+        path: /opt/kafka_2.13-{{ kafka_version }}/config/server.properties
+        regexp: '^node.id='
+        line: 'node.id={{ groups["all"].index(inventory_hostname) + 1 }}'
+      when: server_properties_status.stat.exists
+    
+    - name: Configure controller.quorum.voters
+      lineinfile:
+        path: /opt/kafka_2.13-{{ kafka_version }}/config/server.properties
+        regexp: '^controller.quorum.voters='
+        line: 'controller.quorum.voters=1@192.0.5.222:9093,2@192.0.5.223:9093,3@192.0.5.224:9093'
+      when: server_properties_status.stat.exists
+
+    - name: Configure listeners
+      lineinfile:
+        path: /opt/kafka_2.13-{{ kafka_version }}/config/server.properties
+        regexp: '^#listeners=PLAINTEXT://:9092'
+        line: 'listeners=PLAINTEXT://{{ inventory_hostname }}:9092,CONTROLLER://{{ inventory_hostname }}:9093'
+      when: server_properties_status.stat.exists
+
+    - name: Configure advertised.listeners
+      lineinfile:
+        path: /opt/kafka_2.13-{{ kafka_version }}/config/server.properties
+        regexp: '^advertised.listeners=PLAINTEXT://localhost:9092,CONTROLLER://localhost:9093'
+        line: 'advertised.listeners=PLAINTEXT://{{ inventory_hostname }}:9092'
+      when: server_properties_status.stat.exists
+
+    - name: Configure log.dirs
+      lineinfile:
+        path: /opt/kafka_2.13-{{ kafka_version }}/config/server.properties
+        regexp: '^log.dirs='
+        line: 'log.dirs=/usr/local/kafka/logs/kraft-log'
+      when: server_properties_status.stat.exists
+
+    - name: Configure partitions
+      lineinfile:
+        path: /opt/kafka_2.13-{{ kafka_version }}/config/server.properties
+        regexp: '^num.partitions='
+        line: 'num.partitions=3'
+      when: server_properties_status.stat.exists
+
+    - name: Configure offsets.topic.replication.factor
+      lineinfile:
+        path: /opt/kafka_2.13-{{ kafka_version }}/config/server.properties
+        regexp: '^offsets.topic.replication.factor='
+        line: 'offsets.topic.replication.factor=3'
+      when: server_properties_status.stat.exists
+    
+    - name: Configure transaction.state.log.replication.factor
+      lineinfile:
+        path: /opt/kafka_2.13-{{ kafka_version }}/config/server.properties
+        regexp: '^transaction.state.log.replication.factor='
+        line: 'transaction.state.log.replication.factor=3'
+      when: server_properties_status.stat.exists
+    
+    - name: Configure transaction.state.log.min.isr
+      lineinfile:
+        path: /opt/kafka_2.13-{{ kafka_version }}/config/server.properties
+        regexp: '^transaction.state.log.min.isr='
+        line: 'transaction.state.log.min.isr=3'
+      when: server_properties_status.stat.exists
+
+    - name: Generate random UUID on one node
+      shell: |
+        /opt/kafka_2.13-{{ kafka_version }}/bin/kafka-storage.sh random-uuid
+      register: random_uuid
+      run_once: true  # 한 번만 실행
+
+    - name: Set UUID as a fact
+      set_fact:
+        cluster_uuid: "{{ random_uuid.stdout }}"
+
+    - name: Format Kafka storage ( {{ cluster_uuid }} )
+      shell: |
+        /opt/kafka_2.13-{{ kafka_version }}/bin/kafka-storage.sh format -t {{ cluster_uuid }} -c /opt/kafka_2.13-{{ kafka_version }}/config/server.properties
+        
+    - name: Start Kafka
+      shell: |
+        /opt/kafka_2.13-{{ kafka_version }}/bin/kafka-server-start.sh /opt/kafka_2.13-{{ kafka_version }}/config/server.properties &
+      args:
+        chdir: /opt/kafka_2.13-{{ kafka_version }}
+
+  handlers:
+    - name: restart kafka
+      shell: |
+        /opt/kafka_2.13-{{ kafka_version }}/bin/kafka-server-stop.sh /opt/kafka_2.13-{{ kafka_version }}/config/server.properties
+         /opt/kafka_2.13-{{ kafka_version }}/bin/kafka-server-start.sh /opt/kafka_2.13-{{ kafka_version }}/config/server.properties &
