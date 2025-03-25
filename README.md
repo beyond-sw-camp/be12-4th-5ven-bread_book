@@ -59,7 +59,7 @@
 
 - [CI 설정](https://github.com/beyond-sw-camp/be12-4th-5ven-bread_book/wiki/CI)
 - [CD 설정](https://github.com/beyond-sw-camp/be12-4th-5ven-bread_book/wiki/CD)
-- [Ansible 설정](https://github.com/beyond-sw-camp/be12-4th-5ven-bread_book/wiki/%EC%9A%B4%EC%98%81%ED%99%98%EA%B2%BD#test)
+- [Ansible 설정](https://github.com/beyond-sw-camp/be12-4th-5ven-bread_book/wiki/Ansible%EC%9D%84-%ED%99%9C%EC%9A%A9%ED%95%9C-Kafka-%ED%81%B4%EB%9F%AC%EC%8A%A4%ED%84%B0-%EA%B5%AC%EC%B6%95%EC%9D%98-%EC%9E%A5%EC%A0%90)
 
 <br>
 
