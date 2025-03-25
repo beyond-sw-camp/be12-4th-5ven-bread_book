@@ -1,4 +1,8 @@
-{
-	"MARIADB_DATABASE": "breadboook",
-	"MARIADB_ROOT_PASSWORD": "qwer1234"
-}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: db-cm
+  namespace: breadbook
+data:
+  MARIADB_DATABASE: "breadbook"
+  MARIADB_ROOT_PASSWORD: "qwer1234"
