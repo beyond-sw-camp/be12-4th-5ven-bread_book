@@ -49,7 +49,7 @@
 
 ## 🌐 시스템 아키텍처
 &nbsp;
-![test6 drawio](https://github.com/user-attachments/assets/b63d48dd-1a4f-48e2-879e-d1ef9ca970f1)
+![test10 drawio](https://github.com/user-attachments/assets/a47564c4-b89b-4572-9214-2239892a4e88)
 
 ---
 
