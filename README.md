@@ -84,4 +84,4 @@
 
 ## 💻 CI/CD 테스트 및 결과
 
-- [CI/CD 테스트 및 결과](https://github.com/beyond-sw-camp/be12-4th-5ven-bread_book/wiki/%F0%9F%92%BB-CI-CD-%ED%85%8C%EC%8A%A4%ED%8A%B8-%EB%B0%8F-%EA%B2%B0%EA%B3%BC)
+- [CI/CD 테스트 및 결과](https://github.com/beyond-sw-camp/be12-4th-5ven-bread_book/wiki/CI-CD-%ED%85%8C%EC%8A%A4%ED%8A%B8-%EB%B0%8F-%EA%B2%B0%EA%B3%BC)
