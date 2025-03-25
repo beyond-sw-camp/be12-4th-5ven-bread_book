@@ -41,7 +41,7 @@
 
 ## 🌳 프로젝트 배경
 
-우리 프로젝트는 **중고거래 플랫폼**으로서 사용자 피드백에 빠르게 대응하고, 새로운 기능을 신속하고 안정적으로 배포하는 것이 중요합니다. 특은 1:1 거래가 주요 비즈니스 모델이므로, 사용자 경험에 직접적인 영향을 주는 기능들을 **최대한 빠르고 오류 없이 배포하는 것이 필수적**입니다. 이러한 요구사항을 충족하기 위해 **젠킨스(Jenkins)** 를 CI/CD 도구로 선택했습니다.
+우리 프로젝트는 **중고거래 플랫폼**으로서 사용자 피드백에 빠르게 대응하고, 새로운 기능을 신속하고 안정적으로 배포하는 것이 중요합니다. 특징은 1:1 거래가 주요 비즈니스 모델이므로, 사용자 경험에 직접적인 영향을 주는 기능들을 **최대한 빠르고 오류 없이 배포하는 것이 필수적**입니다. 이러한 요구사항을 충족하기 위해 **젠킨스(Jenkins)** 를 CI/CD 도구로 선택했습니다.
 
 <br>
 
@@ -59,7 +59,7 @@
 
 - [CI 설정](https://github.com/beyond-sw-camp/be12-4th-5ven-bread_book/wiki/CI)
 - [CD 설정](https://github.com/beyond-sw-camp/be12-4th-5ven-bread_book/wiki/CD)
-- [Ansible 설정](https://github.com/beyond-sw-camp/be12-4th-5ven-bread_book/wiki/%EC%9A%B4%EC%98%81%ED%99%98%EA%B2%BD#test)
+- [Ansible 설정](https://github.com/beyond-sw-camp/be12-4th-5ven-bread_book/wiki/Ansible%EC%9D%84-%ED%99%9C%EC%9A%A9%ED%95%9C-Kafka-%ED%81%B4%EB%9F%AC%EC%8A%A4%ED%84%B0-%EA%B5%AC%EC%B6%95%EC%9D%98-%EC%9E%A5%EC%A0%90)
 
 <br>
 
