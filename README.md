@@ -63,20 +63,18 @@
 
 ---
 
+## 🌀 배포 흐름
 
-
-## 📚 다른 시나리오와의 비교
-
-
-- [다른 시나리오와의 비교](https://github.com/beyond-sw-camp/be12-4th-5ven-bread_book/wiki/%EB%8B%A4%EB%A5%B8-%EC%8B%9C%EB%82%98%EB%A6%AC%EC%98%A4%EC%99%80%EC%9D%98-%EB%B9%84%EA%B5%90)
+- [배포 흐름](https://github.com/beyond-sw-camp/be12-4th-5ven-bread_book/wiki/%EB%B0%B0%ED%8F%AC-%ED%9D%90%EB%A6%84)
 
 <br>
 
 ---
 
-## 🌀 배포 흐름
+## 📚 다른 시나리오와의 비교
 
-- [배포 흐름](https://github.com/beyond-sw-camp/be12-4th-5ven-bread_book/wiki/%EB%B0%B0%ED%8F%AC-%ED%9D%90%EB%A6%84)
+
+- [다른 시나리오와의 비교](https://github.com/beyond-sw-camp/be12-4th-5ven-bread_book/wiki/%EB%8B%A4%EB%A5%B8-%EC%8B%9C%EB%82%98%EB%A6%AC%EC%98%A4%EC%99%80%EC%9D%98-%EB%B9%84%EA%B5%90)
 
 <br>
 
