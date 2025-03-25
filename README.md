@@ -46,25 +46,28 @@
 <br>
 
 ---
-## 🌳 운영 환경
-&nbsp;
-- [운영 환경](https://github.com/beyond-sw-camp/be12-4th-5ven-bread_book/wiki/%EC%9A%B4%EC%98%81%ED%99%98%EA%B2%BD)
-
-<br>
-
----
 
 ## 🌐 시스템 아키텍처
 &nbsp;
-- [시스템 아키텍처](https://github.com/beyond-sw-camp/be12-4th-5ven-bread_book/wiki/%EC%8B%9C%EC%8A%A4%ED%85%9C-%EC%95%84%ED%82%A4%ED%85%8D%EC%B2%98)
+![test6 drawio](https://github.com/user-attachments/assets/b63d48dd-1a4f-48e2-879e-d1ef9ca970f1)
+
+---
+
+## 🌳 운영 환경
+
+- [CI 설정](https://github.com/beyond-sw-camp/be12-4th-5ven-bread_book/wiki/CI)
+- [CD 설정](https://github.com/beyond-sw-camp/be12-4th-5ven-bread_book/wiki/CD)
+- [Ansible 설정](https://github.com/beyond-sw-camp/be12-4th-5ven-bread_book/wiki/%EC%9A%B4%EC%98%81%ED%99%98%EA%B2%BD#test)
 
 <br>
 
 ---
 
+
+
 ## 📚 다른 시나리오와의 비교
 
-&nbsp;
+
 - [다른 시나리오와의 비교](https://github.com/beyond-sw-camp/be12-4th-5ven-bread_book/wiki/%EB%8B%A4%EB%A5%B8-%EC%8B%9C%EB%82%98%EB%A6%AC%EC%98%A4%EC%99%80%EC%9D%98-%EB%B9%84%EA%B5%90)
 
 <br>
@@ -73,7 +76,6 @@
 
 ## 🌀 배포 흐름
 
-&nbsp;
 - [배포 흐름](https://github.com/beyond-sw-camp/be12-4th-5ven-bread_book/wiki/%EB%B0%B0%ED%8F%AC-%ED%9D%90%EB%A6%84)
 
 <br>
@@ -81,5 +83,5 @@
 ---
 
 ## 💻 CI/CD 테스트 및 결과
-&nbsp;
+
 - [CI/CD 테스트 및 결과](https://github.com/beyond-sw-camp/be12-4th-5ven-bread_book/wiki/%F0%9F%92%BB-CI-CD-%ED%85%8C%EC%8A%A4%ED%8A%B8-%EB%B0%8F-%EA%B2%B0%EA%B3%BC)
