@@ -51,6 +51,8 @@
 &nbsp;
 ![test10 drawio](https://github.com/user-attachments/assets/a47564c4-b89b-4572-9214-2239892a4e88)
 
+- [아키텍처 설명](https://github.com/beyond-sw-camp/be12-4th-5ven-bread_book/wiki/%EC%8B%9C%EC%8A%A4%ED%85%9C-%EC%95%84%ED%82%A4%ED%85%8D%EC%B2%98)
+
 ---
 
 ## 🌳 운영 환경
