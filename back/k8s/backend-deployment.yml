@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend-deployment-blue
+  namespace: breadbook
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      type: backend
+      deployment: blue
+  template:
+    metadata:
+      labels:
+        type: backend
+        deployment: blue
+    spec:
+      containers:
+        - name: backend-blue
+          image: wkdlrn/breadbookback:latest
+          ports:
+            - containerPort: 8080
+          volumeMounts:
+            - name: image-upload
+              mountPath: /mnt
+          envFrom:
+            - configMapRef:
+                name: back-cm
+      volumes:
+        - name: image-upload
+          persistentVolumeClaim:
+            claimName: image-pvc
